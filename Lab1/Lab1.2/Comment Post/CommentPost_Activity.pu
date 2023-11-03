@@ -1,0 +1,13 @@
+@startuml
+start
+:Chọn bài viết cần bình luận;
+:Hiển thị bài viết;
+:Nhập nội dung bình luận;
+:Lưu bình luận vào cơ sở dữ liệu;
+if (Lưu thành công?) then (yes)
+  :Hiển thị thông báo bình luận thành công;
+else (no)
+  :Hiển thị thông báo lỗi bình luận;
+endif
+stop
+@enduml
