@@ -1,0 +1,15 @@
+@startuml CreateAPostActivity
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+
+start
+:Nhấn vào button 'Create post';
+:Hiển thị màn hình bài đăng;
+repeat :Người dùng điền thông tin bài đăng;
+:Người dùng nhấn vào\n button 'Send post request';
+if(Xác nhận thông tin?)then (yes)
+stop
+else(no) 
+:Thông báo lỗi;
+
+@enduml
