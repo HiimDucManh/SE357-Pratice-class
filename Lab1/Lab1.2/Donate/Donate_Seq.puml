@@ -1,0 +1,42 @@
+@startuml DonateSequence
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+
+participant User
+participant View
+participant Responsity
+participant Server
+participant Bank
+
+activate View
+User -> View: Nhấn button Donate
+View --> User: Hiển thị màn hình chọn mức tiền ủng hộ
+deactivate View
+
+activate User
+User -> View: Nhấn nút "Giao dịch qua ngân hàng"
+deactivate User
+
+activate View
+View -> View: Xác nhận thông tin
+View -> Responsity: Gửi thông tin đi
+deactivate View
+
+activate Responsity
+Responsity -> Server: Gửi yêu cầu thanh toán
+deactivate Responsity
+
+activate Server
+Server -> Bank: Gửi thông tin đi
+deactivate Server 
+
+activate Bank
+Bank -> Bank: Kiểm tra tài khoản
+deactivate Bank 
+
+Bank --> Server: Trả về kết quả
+Server --> Responsity: Trả về kết quả
+Responsity --> View: Trả về kết quả
+View --> User: Thông báo kết quả
+
+@enduml
