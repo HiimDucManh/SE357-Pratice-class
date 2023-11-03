@@ -1,0 +1,20 @@
+@startuml Fundarasing Activity  
+
+|User|
+start
+:(1) Nhấn button đăng ký gây quỹ;
+
+|System|
+:(2) Hiển thị màn hình đăng ký gây quỹ;
+
+|User|
+repeat :(3) Người dùng điền thông tin;
+
+|System|
+backward :(4.1) Thông báo lỗi;
+repeat while ((4) Xác nhận thông tin) is (Thất bại)
+-> Thành công;
+end
+
+
+@enduml

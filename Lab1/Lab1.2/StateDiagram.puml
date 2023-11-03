@@ -1,0 +1,40 @@
+@startuml State Diagram 
+
+
+[*] --> State1
+State1 -> State2
+State2 -> State3
+State3 -> State4
+State4 --> [*]
+
+State2 -> State5
+State5 -> State6
+State6 -> State7
+State7 --> [*]
+
+State5 -> State8
+
+state State9 <<choice>>
+
+State8 -> State9
+State9 -> State10 : Đạt
+State10 -> State11
+State11 --> [*]
+
+State9 -> State12 : Không đạt
+State12 --> [*]
+
+State1: Theo dõi bài viết trên diễn đàn
+State2: Ủng hộ quỹ từ thiện
+State3: Thanh toán tiền ủng hộ
+State4: Xác nhận thanh toán
+State5: Đăng ký tài khoản quyên góp
+State6: Đăng ký tài khoản ngân hàng
+State7: Xác nhận thông tin tài khoản ngân hàng 
+State8: Tổng hợp quỹ từ thiện từ các user ủng hộ
+State9: Kiểm tra chỉ tiêu
+State10: Chuyển quỹ tới người cần hỗ trợ
+State11: Hiển thị sao kê
+State12: Hoàn tiền cho người ủng hộ
+
+@enduml
