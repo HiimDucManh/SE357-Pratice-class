@@ -1,0 +1,21 @@
+@startuml
+actor User
+participant App
+participant Post
+participant Server
+
+User -> App: Đăng nhập vào tài khoản
+activate App
+App -> Post: Xem bài viết
+activate Post
+Post -> App: Hiển thị bài viết
+deactivate Post
+App -> User: Hiển thị bài viết
+User -> App: Nhập nội dung bình luận
+App -> Server: Lưu bình luận vào cơ sở dữ liệu
+activate Server
+Server --> App: Xác nhận lưu thành công
+deactivate Server
+App -> User: Hiển thị thông báo bình luận thành công
+deactivate App
+@enduml
