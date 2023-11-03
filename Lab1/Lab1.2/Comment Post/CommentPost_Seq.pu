@@ -1,10 +1,13 @@
 @startuml
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+
 actor User
 participant App
 participant Post
 participant Server
 
-User -> App: Đăng nhập vào tài khoản
+User -> App: Nhấn vào bài viết
 activate App
 App -> Post: Xem bài viết
 activate Post

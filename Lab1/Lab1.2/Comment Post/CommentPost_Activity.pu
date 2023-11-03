@@ -1,6 +1,5 @@
 @startuml
 start
-:Đăng nhập vào tài khoản;
 :Chọn bài viết cần bình luận;
 :Hiển thị bài viết;
 :Nhập nội dung bình luận;
