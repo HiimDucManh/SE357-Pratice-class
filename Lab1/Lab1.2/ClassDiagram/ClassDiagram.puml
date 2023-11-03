@@ -1,0 +1,60 @@
+@startuml ClassDiagram
+class User {
+    ID: int
+    Name: string
+    Email: string
+    Phone: string
+    Address: string
+    void Register()
+    void Login()
+    void Logout()    
+    void CreatePost()
+    void MakeDonation()
+}
+class Organization {
+    ID: int
+    Name: string
+    Email: string
+    void Login()
+    void Logout()
+    void HoldEvent()
+    void Report() 
+    void MakeDonation()
+}
+class Event {
+    ID: int
+    Name: string
+    Date: DateTime
+    Description: string
+    CreatedBy: Organization
+    void CreateEvent()           
+    void EditEvent()             
+    void DeleteEvent()
+}
+class Post {
+    ID: int          
+    Title: string    
+    Content: string  
+    Author: Volunteer
+    CreatePost()      
+    EditPost()        
+    DeletePost()      
+}
+class Donation {
+    ID: int      
+    Amount: float
+    Event: Event 
+    MakeDonation()
+    EditDonation()
+    DeleteDonation()
+}
+
+User *-- Event
+User *-- Organization
+User *-- Donation
+User *-- Post
+Event -- Organization
+
+
+
+@enduml
