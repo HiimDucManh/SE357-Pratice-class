@@ -1,0 +1,15 @@
+@startuml
+|User|
+start
+: Nhấn vào nút 'Login';
+|System|
+: Hiển thị màn hình đăng nhập;
+|User|
+repeat : Nhập email, password;
+: Nhấn vào nút 'Sign in';
+|System|
+backward : Thông báo lỗi;
+repeat while (Xác nhận thông tin) is (No) not (Yes)
+: Hiển thị màn hình dashboard;
+stop
+@enduml

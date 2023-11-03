@@ -1,0 +1,26 @@
+@startuml
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+
+actor User
+User -> View : Nhấn button login
+activate View
+View --> User : Hiển thị màn hình đăng nhập
+deactivate View
+activate User
+User -> View : Nhập thông tin (email, password)
+deactivate User
+activate View
+View -> View : Xác nhận thông tin
+View -> Responsity : Gửi thông tin
+deactivate View
+activate Responsity
+Responsity -> Server : Gửi yêu cầu đăng nhập
+deactivate Responsity
+activate Server
+Server -> Server : Xác nhận yêu cầu
+Server --> Responsity : Trả về kết quả
+deactivate Server
+Responsity --> View : Trả về kết quả
+View --> User : Thông báo kết quả
+@enduml

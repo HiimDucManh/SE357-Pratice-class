@@ -1,0 +1,8 @@
+@startuml
+|User|
+start
+: Nhấn vào nút 'Hiển thị sao kê';
+|System|
+: Hiển thị màn hình sao kê bao gồm thu và chi;
+stop
+@enduml
