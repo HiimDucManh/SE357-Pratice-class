@@ -1,0 +1,36 @@
+@startuml RegisterSequence
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+
+participant User
+participant View
+participant Responsity
+participant Server
+
+activate View
+User -> View: Nhấn button đăng ký
+View --> User: Hiển thị màn hình đăng ký
+deactivate View
+
+activate User
+User -> View: Nhập thông tin đăng ký
+deactivate User
+
+activate View
+View -> View: Xác nhận thông tin
+View -> Responsity: Gửi thông tin
+deactivate View
+
+activate Responsity
+Responsity -> Server: Gửi yêu cầu tạo tài khoản
+deactivate Responsity
+
+activate Server
+Server ->Server: Xác nhận yêu cầu
+Server --> Responsity: trả về kết quả
+deactivate Server 
+
+Responsity --> View: Trả về kết quả
+View --> User: Thông báo kết quả
+
+@enduml

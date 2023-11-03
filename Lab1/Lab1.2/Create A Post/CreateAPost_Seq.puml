@@ -1,0 +1,36 @@
+@startuml CreateAPostSequence
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+
+participant User
+participant View
+participant Responsity
+participant Server
+
+activate View
+User -> View: Nhấn button Create post
+View --> User: Hiển thị màn hình tạo bài đăng
+deactivate View
+
+activate User
+User -> View: Nhập thông tin tạo bài đăng
+deactivate User
+
+activate View
+View -> View: Xác nhận thông tin
+View -> Responsity: Gửi thông tin đi
+deactivate View
+
+activate Responsity
+Responsity -> Server: Gửi yêu cầu tạo bài đăng
+deactivate Responsity
+
+activate Server
+Server ->Server: Đăng tải bài đăng
+Server --> Responsity: Trả về kết quả
+deactivate Server 
+
+Responsity --> View: Trả về kết quả
+View --> User: Thông báo kết quả
+
+@enduml
