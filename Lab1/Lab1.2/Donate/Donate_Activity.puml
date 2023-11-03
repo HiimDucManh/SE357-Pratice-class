@@ -1,0 +1,14 @@
+@startuml DonateActivity
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+
+start
+:Nhấn vào button 'Donate';
+:Hiển thị màn hình thanh toán;
+repeat :Người dùng bấm vào nút "Giao dịch qua ngân hàng";
+if(Xác nhận thông tin?)then (Thành công)
+stop
+else(Thất bại) 
+:Thông báo lỗi;
+
+@enduml
