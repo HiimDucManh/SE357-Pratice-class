@@ -24,29 +24,29 @@ rectangle Volunteer_Community {
   usecase "Bình luận bài viết" as CommentPost
 }
 
-fundraiser <|-- user
-volunteer <|-- user
-user <|-- guest
+user --|> guest
+fundraiser --|> user
+volunteer --|> user
 
-guest -- PostInf
-guest -- Register
 user -- Login
 user -- UserManagement
+user -- PostManagement
+guest -- PostInf
+guest -- Register
 fundraiser -- BankAccManagement
 fundraiser -- FundManagement
-fundraiser -- PostManagement
 volunteer -- BankAccManagement
 volunteer -- PostManagement
 
-PostManagement ..> ChangeInfAcc : <<include>>
 BankAccManagement ..> StatementInf : <<include>>
 BankAccManagement ..> RegisterFundraising : <<include>>
 BankAccManagement ..> FundraisingPayment : <<include>>
 FundManagement ..> ChangeCharityFund : <<include>>
 FundManagement ..> Donate : <<include>>
+PostManagement ..> ChangeInfAcc : <<include>>
 PostManagement ..> HidePost : <<include>>
 PostManagement ..> DeletePost : <<include>>
 PostManagement ..> CommentPost : <<include>>
-PostManagement ..> PostInf : <<include>>
+UserManagement ..> PostInf : <<include>>
 
 @enduml
