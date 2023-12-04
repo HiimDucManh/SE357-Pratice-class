@@ -1,0 +1,21 @@
+@startuml Register Activity
+
+|User|
+start
+:(1) Nhấn vào button Register;
+
+|System|
+:(2) Hiển thị màn hình đăng ký;
+
+|User|
+repeat :(3) Điền thông tin;
+:(4) Nhấn nút sign up;
+
+|System|
+backward :(5.1) Thông báo lỗi;
+repeat while ((5) Xác nhận thông tin)
+:(5.2) Hiển thị màn hình dashboard;
+
+|System|
+stop
+@enduml

@@ -1,0 +1,52 @@
+@startuml
+left to right direction
+actor "Người dùng vãng lai" as guest
+actor "Người dùng" as user
+actor "Người gây quỹ" as fundraiser
+actor "Người tình nguyện" as volunteer
+rectangle Volunteer_Community {
+  usecase "Đăng ký" as Register
+  usecase "Xem bài viết" as PostInf
+  usecase "Quản lý thông tin người dùng" as UserManagement
+  usecase "Đăng nhập" as Login
+  usecase "Quản lý tài khoản ngân hàng" as BankAccManagement
+  usecase "Quản lý quỹ từ thiện" as FundManagement
+  usecase "Quản lý bài viết" as PostManagement
+
+  usecase "Thay đổi thông tin cá nhân" as ChangeInfAcc
+  usecase "Lấy thông tin sao kê" as StatementInf
+  usecase "Đăng ký thẻ gây quỹ" as RegisterFundraising
+  usecase "Thanh toán tiền gây quỹ" as FundraisingPayment
+  usecase "Chuyển quỹ từ thiện" as ChangeCharityFund
+  usecase "Ủng hộ tiền" as Donate
+  usecase "Ẩn bài viết" as HidePost
+  usecase "Xóa bài viết" as DeletePost
+  usecase "Bình luận bài viết" as CommentPost
+}
+
+fundraiser <|-- user
+volunteer <|-- user
+user <|-- guest
+
+guest -- PostInf
+guest -- Register
+user -- Login
+user -- UserManagement
+fundraiser -- BankAccManagement
+fundraiser -- FundManagement
+fundraiser -- PostManagement
+volunteer -- BankAccManagement
+volunteer -- PostManagement
+
+PostManagement ..> ChangeInfAcc : <<include>>
+BankAccManagement ..> StatementInf : <<include>>
+BankAccManagement ..> RegisterFundraising : <<include>>
+BankAccManagement ..> FundraisingPayment : <<include>>
+FundManagement ..> ChangeCharityFund : <<include>>
+FundManagement ..> Donate : <<include>>
+PostManagement ..> HidePost : <<include>>
+PostManagement ..> DeletePost : <<include>>
+PostManagement ..> CommentPost : <<include>>
+PostManagement ..> PostInf : <<include>>
+
+@enduml

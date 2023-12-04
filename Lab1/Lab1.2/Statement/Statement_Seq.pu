@@ -1,0 +1,24 @@
+@startuml
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+
+actor User
+User -> View : Hiển thị sao kê
+activate View
+View -> View : Xác nhận yêu cầu
+View -> Responsity : Gửi yêu cầu
+deactivate View
+activate Responsity
+Responsity -> Server : Gửi yêu cầu hiển thị sao kê
+deactivate Responsity
+activate Server
+Server -> Bank : Gửi yêu cầu hiển thị sao kê
+deactivate Server
+activate Bank
+Bank -> Bank : Kiểm tra tài khoản
+Bank --> Server : Trả về danh sách thu và chi
+deactivate Bank
+Server --> Responsity : Trả về kết quả
+Responsity --> View : Trả về kết quả
+View --> User : Thông báo kết quả
+@enduml

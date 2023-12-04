@@ -1,0 +1,16 @@
+@startuml
+start
+:Đăng nhập vào tài khoản cá nhân;
+:Yêu cầu truy cập vào dữ liệu tài khoản cá nhân;
+:Hiển thị thông tin tài khoản cá nhân;
+:Chọn chức năng thay đổi thông tin;
+:Hiển thị form thay đổi thông tin;
+:Cung cấp thông tin cập nhật;
+:Yêu cầu cập nhật thông tin tài khoản cá nhân;
+if (Cập nhật thành công?) then (yes)
+  :Hiển thị thông báo cập nhật thành công;
+else (no)
+  :Hiển thị thông báo lỗi cập nhật;
+endif
+stop
+@enduml
