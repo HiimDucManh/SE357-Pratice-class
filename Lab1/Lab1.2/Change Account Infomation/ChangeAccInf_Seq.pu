@@ -1,16 +1,25 @@
 @startuml
-start
-:Đăng nhập vào tài khoản cá nhân;
-:Yêu cầu truy cập vào dữ liệu tài khoản cá nhân;
-:Hiển thị thông tin tài khoản cá nhân;
-:Chọn chức năng thay đổi thông tin;
-:Hiển thị form thay đổi thông tin;
-:Cung cấp thông tin cập nhật;
-:Yêu cầu cập nhật thông tin tài khoản cá nhân;
-if (Cập nhật thành công?) then (yes)
-  :Hiển thị thông báo cập nhật thành công;
-else (no)
-  :Hiển thị thông báo lỗi cập nhật;
-endif
-stop
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+
+actor User
+participant App
+participant Server
+
+User -> App: Nhấn nút 'Thay đổi thông tin tài khoản'
+activate App
+App -> Server: Yêu cầu truy cập vào dữ liệu tài khoản cá nhân
+activate Server
+Server --> App: Trả về dữ liệu tài khoản cá nhân
+deactivate Server
+App -> User: Hiển thị thông tin tài khoản cá nhân
+User -> App: Chọn chức năng thay đổi thông tin
+App -> User: Hiển thị form thay đổi thông tin
+User -> App: Cung cấp thông tin cập nhật
+App -> Server: Yêu cầu cập nhật thông tin tài khoản cá nhân
+activate Server
+Server --> App: Xác nhận cập nhật thành công
+deactivate Server
+App --> User: Hiển thị thông báo cập nhật thành công
+deactivate App
 @enduml

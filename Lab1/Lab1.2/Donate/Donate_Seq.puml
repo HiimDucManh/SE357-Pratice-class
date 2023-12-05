@@ -27,15 +27,30 @@ Responsity -> Server: Gửi yêu cầu thanh toán
 deactivate Responsity
 
 activate Server
-Server -> Bank: Gửi thông tin đi
-deactivate Server 
+alt Thanh toán thành công
+    Server -> Bank: Gửi thông tin thanh toán
+    deactivate Server
 
-activate Bank
-Bank -> Bank: Kiểm tra tài khoản
-deactivate Bank 
+    activate Bank
+    Bank -> Bank: Kiểm tra tài khoản và thực hiện thanh toán
+    deactivate Bank
 
-Bank --> Server: Trả về kết quả
-Server --> Responsity: Trả về kết quả
+    Bank --> Server: Trả về kết quả thanh toán thành công
+    Server --> Responsity: Trả về kết quả thanh toán
+else Thanh toán thất bại
+    Server -> Bank: Gửi thông tin thanh toán
+    deactivate Server
+
+    activate Bank
+    Bank -> Bank: Kiểm tra tài khoản và thông báo thanh toán thất bại
+    deactivate Bank
+
+    Bank --> Server: Trả về kết quả thanh toán thất bại
+    Server --> Responsity: Trả về kết quả thanh toán thất bại
+end
+
+deactivate Responsity
+
 Responsity --> View: Trả về kết quả
 View --> User: Thông báo kết quả
 
