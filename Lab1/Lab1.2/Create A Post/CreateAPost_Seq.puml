@@ -26,9 +26,14 @@ Responsity -> Server: Gửi yêu cầu tạo bài đăng
 deactivate Responsity
 
 activate Server
-Server ->Server: Đăng tải bài đăng
-Server --> Responsity: Trả về kết quả
-deactivate Server 
+alt Tạo bài đăng thành công
+    Server -> Server: Đăng tải bài đăng
+    Server --> Responsity: Trả về kết quả thành công
+else Tạo bài đăng thất bại
+    Server -> Server: Xử lý lỗi, không đăng tải bài đăng
+    Server --> Responsity: Trả về kết quả thất bại
+end
+deactivate Server
 
 Responsity --> View: Trả về kết quả
 View --> User: Thông báo kết quả

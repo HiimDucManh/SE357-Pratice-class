@@ -1,4 +1,4 @@
-@startuml Fundarasing Sequence
+@startuml FundraisingSequence
 skinparam style strictuml
 skinparam SequenceMessageAlignment center
 
@@ -9,8 +9,8 @@ participant Server
 participant Bank
 
 activate View
-User -> View : Nhấn đăng ký gây quỹ
-View --> User : Hiển thị màn hình gây quỹ
+User -> View: Nhấn đăng ký gây quỹ
+View --> User: Hiển thị màn hình gây quỹ
 deactivate View
 
 activate User
@@ -19,7 +19,7 @@ deactivate User
 
 activate View
 View -> View: Xác nhận thông tin đăng ký
-View -> Responsity : Gửi thông tin
+View -> Responsity: Gửi thông tin
 deactivate View
 
 activate Responsity
@@ -27,15 +27,30 @@ Responsity -> Server: Gửi yêu cầu đăng ký
 deactivate Responsity
 
 activate Server
-Server -> Bank : Gửi thông tin
-deactivate Server
+alt Đăng ký thành công
+    Server -> Bank: Gửi thông tin đăng ký
+    deactivate Server
 
-activate Bank
-Bank -> Bank : Kiểm tra thông tin tài khoản
-deactivate Bank
+    activate Bank
+    Bank -> Bank: Kiểm tra thông tin tài khoản
+    deactivate Bank
 
-Bank --> Server: Trả về kết quả
-Server --> Responsity: Trả về kết quả
+    Bank --> Server: Trả về kết quả đăng ký thành công
+    Server --> Responsity: Trả về kết quả đăng ký thành công
+else Đăng ký thất bại
+    Server -> Bank: Gửi thông tin đăng ký
+    deactivate Server
+
+    activate Bank
+    Bank -> Bank: Kiểm tra thông tin tài khoản và thông báo lỗi
+    deactivate Bank
+
+    Bank --> Server: Trả về kết quả đăng ký thất bại
+    Server --> Responsity: Trả về kết quả đăng ký thất bại
+end
+
+deactivate Responsity
+
 Responsity --> View: Trả về kết quả
 View --> User: Thông báo kết quả
 
