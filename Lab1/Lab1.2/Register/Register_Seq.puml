@@ -26,8 +26,15 @@ Responsity -> Server: Gửi yêu cầu tạo tài khoản
 deactivate Responsity
 
 activate Server
-Server ->Server: Xác nhận yêu cầu
-Server --> Responsity: trả về kết quả
+
+alt Đăng ký thành công
+    Server -> Server: Xác nhận yêu cầu và tạo tài khoản
+    Server --> Responsity: Trả về kết quả đăng ký thành công
+else Đăng ký thất bại
+    Server -> Server: Xác nhận yêu cầu và thông báo lỗi
+    Server --> Responsity: Trả về kết quả đăng ký thất bại
+end
+
 deactivate Server 
 
 Responsity --> View: Trả về kết quả
